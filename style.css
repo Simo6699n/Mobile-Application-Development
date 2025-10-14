@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 { text-align: center; color: #003366; }
+
+form { display: flex; flex-direction: column; margin-bottom: 20px; }
+
+label { margin-top: 10px; font-weight: bold; }
+input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px; }
+button { margin-top: 10px; padding: 10px; border: none; border-radius: 5px; background-color: #003366; color: #fff; cursor: pointer; }
+button:hover { background-color: #0055a5; }
+
+#message { text-align: center; margin: 10px 0; font-weight: bold; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+th { background: #003366; color: white; }
+.action-btn { padding: 5px 8px; border: none; border-radius: 5px; cursor: pointer; margin: 0 3px; }
+.edit { background-color: #f4a261; color: white; }
+.delete { background-color: #e63946; color: white; }

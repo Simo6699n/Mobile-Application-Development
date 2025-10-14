@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GearUp Contacts CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>GearUp Contact Manager</h1>
+
+    <form id="contactForm">
+      <input type="hidden" id="contactId">
+      <label>First Name</label>
+      <input type="text" id="firstName" placeholder="Enter first name" required>
+      <label>Last Name</label>
+      <input type="text" id="lastName" placeholder="Enter last name" required>
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Enter email" required>
+      <button type="submit" id="saveBtn">Save</button>
+      <button type="button" id="updateBtn" style="display:none;">Update</button>
+      <button type="button" id="cancelBtn" style="display:none;">Cancel</button>
+    </form>
+
+    <p id="message"></p>
+
+    <h2>Saved Contacts</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="contactsBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script>
+
+  <!-- Your JS -->
+  <script src="script.js"></script>
+</body>
+</html>
