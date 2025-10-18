@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GearUp App</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Small map styling */
+    .map {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #c0c0c0 25%, #e0e0e0 25%, #e0e0e0 50%, #c0c0c0 50%, #c0c0c0 75%, #e0e0e0 75%, #e0e0e0 100%);
+      background-size: 50px 50px;
+      border-radius: 12px;
+      margin: 12px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .map::after {
+      content: "📍 Fake Map";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* Profile button in header */
+    header {
+      position: relative;
+    }
+    .profile-btn {
+      position: absolute;
+      right: 16px;
+      top: 14px;
+      background: white;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* Profile styling */
+    #profile {
+      text-align: center;
+    }
+    #profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #1E3A8A;
+    }
+    #profile input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <header>
+      GearUp
+      <button class="profile-btn" onclick="navTo('profile')">👤</button>
+    </header>
+
+    <main>
+    <!-- Home Screen -->
+<section class="screen active" id="home">
+  <div class="card" id="rideCard">
+    <h3>🏍️ Smart Ride Tracker</h3>
+    <p>Press the button below to start your ride.</p>
+
+    <button id="startRideBtn" class="btn primary">▶️ Start Ride</button>
+
+    <div id="rideStatus" class="ride-status"></div>
+
+    <div id="rideMap" class="ride-map hidden">
+      <div id="roadLine"></div>
+      <div id="bikeIcon">🏍️</div>
+    </div>
+  </div>
+</section>
+
+
+      <!-- Navigation -->
+      <section class="screen" id="navigation">
+        <div class="card">
+          <h4>Navigation</h4>
+          <p>Find the best routes and avoid heavy traffic.</p>
+          <div id="map" class="map"></div>
+          <button id="saveRide" class="btn">Save Ride</button>
+          <button id="readRide" class="btn ghost">Read Last Ride</button>
+        </div>
+      </section>
+
+    <!-- Safety Screen -->
+<section class="screen" id="safety">
+  <div class="card">
+    <h3>🚨 Emergency Center</h3>
+    <p>In an emergency, tap a button below to instantly reach the right service.</p>
+
+    <div class="emergency-buttons">
+      <button class="btn emergency" id="callPolice">🚓 Police (100)</button>
+      <button class="btn emergency" id="callAmbulance">🚑 Ambulance (102)</button>
+      <button class="btn emergency" id="callHospital">🏥 Nearest Hospital</button>
+      <button class="btn emergency" id="callFire">🔥 Fire Brigade (101)</button>
+      <button class="btn emergency" id="callWomenHelpline">👩‍🦰 Women Helpline (1145)</button>
+      <button class="btn emergency" id="callChildHelpline">👶 Child Helpline (1098)</button>
+    </div>
+
+    <div class="note">
+      <p>📍 Your call will be logged for safety tracking in Firebase.</p>
+    </div>
+  </div>
+</section>
+
+      <!-- Maintenance Screen -->
+<section class="screen" id="maintenance">
+  <div class="card">
+    <h3>🛠️ Bike Maintenance</h3>
+    <p>Keep your bikes in top shape! Check when the next service is due.</p>
+
+    <div class="bike-list">
+      <div class="bike-item">
+        <h4>Royal Enfield Classic 350</h4>
+        <p>Next Service Due: <b>1200 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>Yamaha MT-15</h4>
+        <p>Next Service Due: <b>950 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>TVS Apache RTR 160</h4>
+        <p>Next Service Due: <b>1350 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>Bajaj Pulsar N250</h4>
+        <p>Next Service Due: <b>800 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>Hero Xpulse 200</h4>
+        <p>Next Service Due: <b>1500 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>Honda CB350</h4>
+        <p>Next Service Due: <b>1100 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>KTM Duke 200</h4>
+        <p>Next Service Due: <b>900 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>BMW G310R</h4>
+        <p>Next Service Due: <b>1800 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>Suzuki Gixxer SF</h4>
+        <p>Next Service Due: <b>1050 km</b></p>
+      </div>
+      <div class="bike-item">
+        <h4>Kawasaki Ninja 300</h4>
+        <p>Next Service Due: <b>2000 km</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Documents Screen -->
+<section class="screen" id="documents">
+  <div class="card">
+    <h3>📄 Vehicle Documents</h3>
+    <p>Upload and securely store your essential riding documents.</p>
+
+    <div class="doc-upload">
+      <label for="licenseUpload" class="upload-box">
+        🪪 Upload License
+        <input type="file" id="licenseUpload" accept="image/*,.pdf" hidden>
+      </label>
+
+      <label for="bluebookUpload" class="upload-box">
+        📘 Upload Bluebook
+        <input type="file" id="bluebookUpload" accept="image/*,.pdf" hidden>
+      </label>
+    </div>
+
+    <div class="preview-area" id="previewArea">
+      <h4>Uploaded Documents</h4>
+      <div class="preview" id="licensePreview">No License Uploaded</div>
+      <div class="preview" id="bluebookPreview">No Bluebook Uploaded</div>
+    </div>
+  </div>
+</section>
+
+      <!-- Profile -->
+      <section class="screen" id="profile">
+        <div class="card">
+          <h3>My Profile</h3>
+          <img id="profilePhoto" src="https://via.placeholder.com/100?text=Rider" alt="Profile Picture">
+          <input type="file" id="photoInput" accept="image/*">
+          <input type="text" id="displayName" placeholder="Enter your name">
+
+          <p><b>Email:</b> <span id="userEmail">Loading...</span></p>
+          <p><b>UID:</b> <span id="userUID">Loading...</span></p>
+
+          <button class="btn" id="saveProfile">Save Profile</button>
+          <button class="btn ghost" id="logoutBtn">Log Out</button>
+          <button class="btn" style="background:#DC2626" id="deleteBtn">Delete Account</button>
+        </div>
+      </section>
+    </main>
+
+    <nav>
+      <button class="active" onclick="navTo('home')">🏠 Home</button>
+      <button onclick="navTo('navigation')">🗺️ Nav</button>
+      <button onclick="navTo('safety')">🚨 SOS</button>
+      <button onclick="navTo('maintenance')">🛠️ Maint</button>
+      <button onclick="navTo('documents')">📄 Docs</button>
+    </nav>
+  </div>
+
+  <script type="module">
+    import { getAuth, onAuthStateChanged, signOut, deleteUser, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { ref, set, get, remove } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+    import { db } from "./firebase-config.js";
+
+    const screens = ['home','navigation','safety','maintenance','documents','profile'];
+    window.navTo = function(id) {
+      screens.forEach(s => {
+        document.getElementById(s).classList.remove('active');
+        if (s === id) document.getElementById(s).classList.add('active');
+      });
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    }
+
+    const auth = getAuth();
+    const photoInput = document.getElementById("photoInput");
+    const photo = document.getElementById("profilePhoto");
+    const nameInput = document.getElementById("displayName");
+    const emailEl = document.getElementById("userEmail");
+    const uidEl = document.getElementById("userUID");
+
+    let currentUser = null;
+
+    // Show logged user info
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "welcome.html";
+        return;
+      }
+      currentUser = user;
+      emailEl.textContent = user.email;
+      uidEl.textContent = user.uid;
+
+      const snap = await get(ref(db, "users/" + user.uid));
+      if (snap.exists()) {
+        const data = snap.val();
+        if (data.displayName) nameInput.value = data.displayName;
+        if (data.photoURL) photo.src = data.photoURL;
+      }
+    });
+
+    // Preview photo
+    photoInput.addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => photo.src = ev.target.result;
+      reader.readAsDataURL(file);
+    });
+
+    // Save profile
+    document.getElementById("saveProfile").addEventListener("click", async () => {
+      if (!currentUser) return;
+      const name = nameInput.value.trim();
+      const photoURL = photo.src;
+
+      await updateProfile(currentUser, { displayName: name, photoURL });
+      await set(ref(db, "users/" + currentUser.uid), {
+        email: currentUser.email,
+        displayName: name,
+        photoURL,
+        updatedAt: new Date().toISOString(),
+      });
+      alert("✅ Profile updated!");
+    });
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await signOut(auth);
+      alert("👋 Logged out");
+      window.location.href = "welcome.html";
+    });
+
+    // Delete Account
+    document.getElementById("deleteBtn").addEventListener("click", async () => {
+      if (!confirm("Are you sure? This will delete your account.")) return;
+      try {
+        await remove(ref(db, "users/" + currentUser.uid));
+        await deleteUser(currentUser);
+        alert("🗑️ Account deleted");
+        window.location.href = "welcome.html";
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>

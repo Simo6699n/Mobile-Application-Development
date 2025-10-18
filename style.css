@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+  --primary: #1E3A8A;
+  --secondary: #DC2626;
+  --bg: #f6f7fb;
+  --muted: #6b7280;
+  --radius: 16px;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: linear-gradient(180deg,#eef2ff 0%,var(--bg) 100%);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone {
+  width: 375px;
+  height: 812px;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding: 14px 24px;
+  border-radius: 12px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.ghost {
+  background: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav button.active {
+  color: var(--primary);
+}
+
+@media (max-width: 480px) {
+  .phone {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+/* ---------- AUTH PAGE INPUT STYLES ---------- */
+.input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Center content vertically on welcome screen */
+#auth .card {
+  text-align: center;
+  padding: 20px;
+}
+
+#auth h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+#auth p {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+/* Fake Map Style */
+.map {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #c0c0c0 25%, #e0e0e0 25%, #e0e0e0 50%, #c0c0c0 50%, #c0c0c0 75%, #e0e0e0 75%, #e0e0e0 100%);
+  background-size: 50px 50px;
+  border-radius: 12px;
+  margin: 12px 0;
+  position: relative;
+  overflow: hidden;
+}
+.map::after {
+  content: "📍 Fake Map";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #555;
+}
+/* ---------- Maintenance Page ---------- */
+.bike-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bike-item {
+  background: #f8f9ff;
+  border: 1px solid #d0d7ff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bike-item h4 {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+}
+
+.bike-item p {
+  margin: 4px 0 0;
+  color: #555;
+}
+/* ---------- Documents Page ---------- */
+.doc-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.upload-box {
+  display: block;
+  background: var(--primary);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.upload-box:hover {
+  background: #3748b0;
+}
+
+.preview-area {
+  margin-top: 18px;
+}
+
+.preview-area h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.preview {
+  background: #f8f9ff;
+  border: 1px solid #d0d7ff;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #444;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+/* ---------- Emergency Center Styles ---------- */
+.emergency-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn.emergency {
+  background: var(--secondary);
+  color: white;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 12px;
+  transition: 0.3s;
+  text-align: left;
+}
+
+.btn.emergency:hover {
+  background: #b91c1c;
+}
+
+.note {
+  margin-top: 14px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #7f1d1d;
+}
+/* ---------- Ride Simulation Styles ---------- */
+.ride-map {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  margin-top: 20px;
+  background: #e0f2fe;
+  border: 2px dashed #0ea5e9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#roadLine {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background: #1e293b;
+  transform: translateY(-50%);
+}
+
+#bikeIcon {
+  position: absolute;
+  top: 45%;
+  left: 10%;
+  font-size: 28px;
+  transition: left 0.3s linear;
+}
+
+.ride-status {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.hidden {
+  display: none;
+}
